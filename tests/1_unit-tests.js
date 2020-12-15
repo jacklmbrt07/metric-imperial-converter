@@ -131,7 +131,6 @@ suite("Unit Tests", function () {
         0.1
       ); //0.1 tolerance
       done();
-      //done();
     });
 
     test("Mi to Km", function (done) {
@@ -143,7 +142,6 @@ suite("Unit Tests", function () {
         0.1
       ); //0.1 tolerance
       done();
-      //done();
     });
 
     test("Km to Mi", function (done) {
@@ -155,7 +153,6 @@ suite("Unit Tests", function () {
         0.1
       ); //0.1 tolerance
       done();
-      //done();
     });
 
     test("Lbs to Kg", function (done) {
@@ -167,7 +164,6 @@ suite("Unit Tests", function () {
         0.1
       ); //0.1 tolerance
       done();
-      //done();
     });
 
     test("Kg to Lbs", function (done) {
@@ -179,7 +175,6 @@ suite("Unit Tests", function () {
         0.1
       ); //0.1 tolerance
       done();
-      //done();
     });
   });
 });
