@@ -16,6 +16,12 @@ function ConvertHandler() {
 
     result = input.match(inputRegex)[0];
 
+    let numRegex = /\d/;
+
+    if (numRegex.test(result) === false) {
+      result = 1;
+    }
+
     if (result.toString().includes("/")) {
       let values = result.toString().split("/");
       if (values.length != 2) {
@@ -36,6 +42,10 @@ function ConvertHandler() {
 
     result = input.match(inputRegex)[1];
 
+    if (!result) {
+      result = input.match(inputRegex)[0];
+    }
+
     let validUnits = [
       "gal",
       "l",
@@ -51,7 +61,9 @@ function ConvertHandler() {
       "KG",
     ];
 
-    if (!validUnits.includes(result)) return "invalid unit";
+    if (!validUnits.includes(result)) {
+      return "invalid unit";
+    }
 
     return result;
   };
@@ -83,6 +95,33 @@ function ConvertHandler() {
   this.spellOutUnit = function (unit) {
     let result;
 
+    switch (unit) {
+      case "gal":
+      case "GAL":
+        result = "gallon(s)";
+        break;
+      case "l":
+      case "L":
+        result = "Liter(s)";
+        break;
+      case "lbs":
+      case "LBS":
+        result = "pound(s)";
+        break;
+      case "kg":
+      case "KG":
+        result = "kilogram(s)";
+        break;
+      case "mi":
+      case "MI":
+        result = "mile(s)";
+        break;
+      case "km":
+      case "KM":
+        result = "kilometer(s)";
+        break;
+    }
+
     return result;
   };
 
@@ -110,11 +149,15 @@ function ConvertHandler() {
       result = (initUnit / miToKm).toFixed(5);
     }
 
-    return result;
+    return parseFloat(result);
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
     let result;
+
+    result = `${initNum} ${this.spellOutUnit(
+      initUnit
+    )} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
 
     return result;
   };
