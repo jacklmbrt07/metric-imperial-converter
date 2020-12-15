@@ -98,7 +98,7 @@ function ConvertHandler() {
     switch (unit) {
       case "gal":
       case "GAL":
-        result = "gallon(s)";
+        result = "Gallon(s)";
         break;
       case "l":
       case "L":
@@ -106,19 +106,19 @@ function ConvertHandler() {
         break;
       case "lbs":
       case "LBS":
-        result = "pound(s)";
+        result = "Pound(s)";
         break;
       case "kg":
       case "KG":
-        result = "kilogram(s)";
+        result = "Kilogram(s)";
         break;
       case "mi":
       case "MI":
-        result = "mile(s)";
+        result = "Mile(s)";
         break;
       case "km":
       case "KM":
-        result = "kilometer(s)";
+        result = "Kilometer(s)";
         break;
     }
 
