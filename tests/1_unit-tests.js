@@ -56,17 +56,13 @@ suite("Unit Tests", function () {
     test("For Each Valid Unit Inputs", function (done) {
       let input = [
         "gal",
-        "l",
         "mi",
         "km",
         "lbs",
         "kg",
-        "GAL",
+
         "L",
-        "MI",
-        "KM",
-        "LBS",
-        "KG",
+
       ];
       input.forEach(function (ele) {
         assert.equal(convertHandler.getUnit(32 + ele), ele);
@@ -84,7 +80,7 @@ suite("Unit Tests", function () {
   suite("Function convertHandler.getReturnUnit(initUnit)", function () {
     test("For Each Valid Unit Inputs", function (done) {
       let input = ["gal", "l", "mi", "km", "lbs", "kg"];
-      let expect = ["l", "gal", "km", "mi", "kg", "lbs"];
+      let expect = ["L", "gal", "km", "mi", "kg", "lbs"];
       input.forEach(function (ele, i) {
         assert.equal(convertHandler.getReturnUnit(ele), expect[i]);
       });

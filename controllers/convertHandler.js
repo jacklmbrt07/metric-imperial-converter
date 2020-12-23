@@ -34,13 +34,12 @@ function ConvertHandler() {
 
     if (isNaN(result)) return "invalid number";
 
-    return result;
+    return parseFloat(result);
   };
 
   this.getUnit = function (input) {
-    let result;
-
-    result = input.match(inputRegex)[1];
+    input = input.toLowerCase();
+    let result = input.match(inputRegex)[1];
 
     if (!result) {
       result = input.match(inputRegex)[0];
@@ -65,6 +64,10 @@ function ConvertHandler() {
       return "invalid unit";
     }
 
+    if (result == 'l') { 
+      result = 'L'
+    }
+
     return result;
   };
 
@@ -72,7 +75,7 @@ function ConvertHandler() {
     let result;
 
     if (initUnit === "gal" || initUnit === "GAL") {
-      result = "l";
+      result = "L";
     } else if (initUnit === "l" || initUnit === "L") {
       result = "gal";
     }
@@ -153,11 +156,10 @@ function ConvertHandler() {
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-    let result;
+    let initial_Units = this.spellOutUnit(initUnit)
+    let return_Units = this.spellOutUnit(returnUnit)
 
-    result = `${initNum} ${this.spellOutUnit(
-      initUnit
-    )} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+    let result = `${initNum} ${initial_Units} converts to ${returnNum} ${return_Units}`;
 
     return result;
   };
