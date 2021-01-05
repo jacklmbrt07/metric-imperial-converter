@@ -1,11 +1,3 @@
-/*
- *
- *
- *       FILL IN EACH UNIT TEST BELOW COMPLETELY
- *       -----[Keep the tests in the same order!]----
- *       (if additional are added, keep them at the very end!)
- */
-
 const chai = require("chai");
 let assert = chai.assert;
 const ConvertHandler = require("../controllers/convertHandler.js");
@@ -54,20 +46,7 @@ suite("Unit Tests", function () {
 
   suite("Function convertHandler.getUnit(input)", function () {
     test("For Each Valid Unit Inputs", function (done) {
-      let input = [
-        "gal",
-        "l",
-        "mi",
-        "km",
-        "lbs",
-        "kg",
-        "GAL",
-        "L",
-        "MI",
-        "KM",
-        "LBS",
-        "KG",
-      ];
+      let input = ["gal", "mi", "km", "lbs", "kg", "L"];
       input.forEach(function (ele) {
         assert.equal(convertHandler.getUnit(32 + ele), ele);
       });
@@ -84,7 +63,7 @@ suite("Unit Tests", function () {
   suite("Function convertHandler.getReturnUnit(initUnit)", function () {
     test("For Each Valid Unit Inputs", function (done) {
       let input = ["gal", "l", "mi", "km", "lbs", "kg"];
-      let expect = ["l", "gal", "km", "mi", "kg", "lbs"];
+      let expect = ["L", "gal", "km", "mi", "kg", "lbs"];
       input.forEach(function (ele, i) {
         assert.equal(convertHandler.getReturnUnit(ele), expect[i]);
       });
@@ -96,12 +75,12 @@ suite("Unit Tests", function () {
     test("For Each Valid Unit Inputs", function (done) {
       let input = ["gal", "l", "mi", "km", "lbs", "kg"];
       let expect = [
-        "Gallon(s)",
-        "Liter(s)",
-        "Mile(s)",
-        "Kilometer(s)",
-        "Pound(s)",
-        "Kilogram(s)",
+        "gallons",
+        "Liters",
+        "miles",
+        "kilometers",
+        "pounds",
+        "kilograms",
       ];
       input.forEach(function (ele, i) {
         assert.equal(convertHandler.spellOutUnit(ele), expect[i]);

@@ -1,11 +1,3 @@
-/*
- *
- *
- *       Complete the handler logic below
- *
- *
- */
-
 const { init } = require("../server");
 
 const inputRegex = /[a-z]+|[^a-z]+/gi;
@@ -34,13 +26,12 @@ function ConvertHandler() {
 
     if (isNaN(result)) return "invalid number";
 
-    return result;
+    return parseFloat(result);
   };
 
   this.getUnit = function (input) {
-    let result;
-
-    result = input.match(inputRegex)[1];
+    input = input.toLowerCase();
+    let result = input.match(inputRegex)[1];
 
     if (!result) {
       result = input.match(inputRegex)[0];
@@ -65,6 +56,10 @@ function ConvertHandler() {
       return "invalid unit";
     }
 
+    if (result == "l") {
+      result = "L";
+    }
+
     return result;
   };
 
@@ -72,7 +67,7 @@ function ConvertHandler() {
     let result;
 
     if (initUnit === "gal" || initUnit === "GAL") {
-      result = "l";
+      result = "L";
     } else if (initUnit === "l" || initUnit === "L") {
       result = "gal";
     }
@@ -98,27 +93,27 @@ function ConvertHandler() {
     switch (unit) {
       case "gal":
       case "GAL":
-        result = "Gallon(s)";
+        result = "gallons";
         break;
       case "l":
       case "L":
-        result = "Liter(s)";
+        result = "Liters";
         break;
       case "lbs":
       case "LBS":
-        result = "Pound(s)";
+        result = "pounds";
         break;
       case "kg":
       case "KG":
-        result = "Kilogram(s)";
+        result = "kilograms";
         break;
       case "mi":
       case "MI":
-        result = "Mile(s)";
+        result = "miles";
         break;
       case "km":
       case "KM":
-        result = "Kilometer(s)";
+        result = "kilometers";
         break;
     }
 
@@ -153,11 +148,10 @@ function ConvertHandler() {
   };
 
   this.getString = function (initNum, initUnit, returnNum, returnUnit) {
-    let result;
+    let initial_Units = this.spellOutUnit(initUnit);
+    let return_Units = this.spellOutUnit(returnUnit);
 
-    result = `${initNum} ${this.spellOutUnit(
-      initUnit
-    )} converts to ${returnNum} ${this.spellOutUnit(returnUnit)}`;
+    let result = `${initNum} ${initial_Units} converts to ${returnNum} ${return_Units}`;
 
     return result;
   };
