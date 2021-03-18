@@ -10,6 +10,8 @@
 
 const expect = require("chai").expect;
 const ConvertHandler = require("../controllers/convertHandler.js");
+const bunyan = require("bunyan");
+const log = bunyan.createLogger({ name: "Metric/Imperial Converter" });
 
 module.exports = function (app) {
   let convertHandler = new ConvertHandler();
@@ -27,16 +29,22 @@ module.exports = function (app) {
       returnUnit
     );
 
-    if (initNum === 'invalid number' && initUnit === "invalid unit"){
-      res.json("invalid number and unit")
+    if (initNum === "invalid number" && initUnit === "invalid unit") {
+      var error = "invalid number and unit";
+      log.info("Request failed and returning error", error);
+      res.json(error);
     }
 
-    if (initNum === 'invalid number'){
-      res.json('invalid number')
+    if (initNum === "invalid number") {
+      var error = "invalid number";
+      log.info("Request failed and returning error", error);
+      res.json(error);
     }
 
     if (initUnit === "invalid unit") {
-      res.json("invalid unit");
+      var error = "invalid unit";
+      log.info("Request failed and returning error", error);
+      res.json(error);
     }
 
     let responseObject = {
